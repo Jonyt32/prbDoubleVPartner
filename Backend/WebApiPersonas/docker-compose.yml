@@ -1,6 +1,44 @@
+version: "3.8"
+
 services:
   webapipersonas:
-    image: ${DOCKER_REGISTRY-}webapipersonas
     build:
-      context: .
-      dockerfile: WebApiPersonas/Dockerfile
+      context: ./WebApiPersonas
+      dockerfile: Dockerfile
+    container_name: webapipersonas
+    ports:
+      - "5000:80"
+      - "5001:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elk-network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.10
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - elk-network
+
+networks:
+  elk-network:
+    driver: bridge
