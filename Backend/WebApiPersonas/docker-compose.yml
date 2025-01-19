@@ -1,0 +1,6 @@
+services:
+  webapipersonas:
+    image: ${DOCKER_REGISTRY-}webapipersonas
+    build:
+      context: .
+      dockerfile: WebApiPersonas/Dockerfile
