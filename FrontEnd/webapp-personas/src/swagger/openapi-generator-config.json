@@ -1,0 +1,8 @@
+{
+    "generatorName": "typescript-angular",
+    "inputSpec": "./swagger/WebApiPersonas.json",
+    "output": "./src/app/services/openApi",
+    "additionalProperties": {
+        "apiUrl": "${apiUrl}"
+    }
+}
