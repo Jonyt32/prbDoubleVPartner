@@ -2,11 +2,6 @@
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
 using EnviarEmailprbJony;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -71,7 +66,7 @@ namespace Application.Services
                 }
 
                 await _personaRepository.AddAsync(entity);
-                Usuario newuser = new Usuario() 
+                Usuario newuser = new Usuario()
                 {
                     FechaCreacion = DateTime.Now,
                     NombreUsuario = entity.Email,
@@ -95,7 +90,7 @@ namespace Application.Services
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
         public async Task UpdateAsync(Persona entity)
         {
@@ -128,7 +123,7 @@ namespace Application.Services
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
     }
 }

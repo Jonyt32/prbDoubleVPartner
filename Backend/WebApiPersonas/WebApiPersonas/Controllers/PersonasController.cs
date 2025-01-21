@@ -1,6 +1,5 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApiPersonas.Controllers
@@ -79,7 +78,7 @@ namespace WebApiPersonas.Controllers
         public async Task<IActionResult> Update([FromBody] Persona persona)
         {
             string mensaje = await ValidarPersona(persona);
-            if (!string.IsNullOrEmpty(mensaje)) 
+            if (!string.IsNullOrEmpty(mensaje))
             {
                 return BadRequest(mensaje);
             }
@@ -106,7 +105,7 @@ namespace WebApiPersonas.Controllers
             return NoContent();
         }
 
-        private async Task<string> ValidarPersona(Persona persona) 
+        private async Task<string> ValidarPersona(Persona persona)
         {
             string mensaje = string.Empty;
             if (persona == null)

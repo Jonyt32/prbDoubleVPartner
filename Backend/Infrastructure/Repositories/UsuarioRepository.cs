@@ -4,9 +4,6 @@ using Core.Settings;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {

@@ -1,9 +1,9 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Repositories;
-using Microsoft.Extensions.Options;
 using Core.Settings;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
 using System.Data;
 
 namespace Infrastructure.Repositories
