@@ -1,0 +1,45 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# ASP.NET Core
+wwwroot/
+appsettings.Development.json
+
+# .NET build results
+bin/
+obj/
+
+# User-specific files
+.vs/
+.idea/
+
+# Rider
+.idea/
+
+# User-specific JetBrains Rider files
+.idea/
+
+# ASP.NET session files
+/*.bak
+/*.log
+/*.sql
+/*.sqlite
+
+# Local NuGet packages
+.nuget/
+
+# .NET Core and Visual Studio for Mac
+.vscode/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp

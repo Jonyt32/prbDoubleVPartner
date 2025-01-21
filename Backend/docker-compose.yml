@@ -3,18 +3,27 @@ version: "3.8"
 services:
   webapipersonas:
     build:
-      context: ./WebApiPersonas
+      context: .
       dockerfile: Dockerfile
-    container_name: webapipersonas
     ports:
       - "5000:80"
       - "5001:443"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    depends_on:
-      - elasticsearch
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=prbDoubleParners;User=sa;Password=jtorres!qwerty32;TrustServerCertificate=True
     networks:
-      - elk-network
+      - app-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: sqlserver
+    environment:
+      - SA_PASSWORD=jtorres!qwerty32
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.17.10
@@ -41,4 +50,6 @@ services:
 
 networks:
   elk-network:
+    driver: bridge
+  app-network:
     driver: bridge
