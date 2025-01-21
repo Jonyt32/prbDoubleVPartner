@@ -15,7 +15,7 @@ namespace Core.Entities
         public string TipoIdentificacion { get; set; }
         public string Email { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public string Identificacion { get; set; }
-        public string NombresApellidos { get; set; }
+        public string? Identificacion { get; set; }
+        public string? NombresApellidos { get; set; }
     }
 }

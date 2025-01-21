@@ -19,14 +19,15 @@ namespace EnviarEmailprbJony
             _smtpPort = smtpPort;
         }
 
-        public async Task<bool> SendEmailAsync(string toEmail, string subject, string body, string userName, string password)
+        public async Task<bool> SendEmailAsync(string toEmail, string subject, string body)
         {
             try
             {
+                string userName = "tonyjorres@gmail.com";
                 var smtpClient = new SmtpClient(_smtpHost)
                 {
                     Port = _smtpPort,
-                    Credentials = new NetworkCredential(userName, password),
+                    Credentials = new NetworkCredential(userName, "fzgd cpim chve jjkh"),
                     EnableSsl = true,
                 };
 

@@ -7,7 +7,7 @@ namespace WebApiPersonas.Controllers
 {
     [ApiController]
     [Route("api/[controller]/")]
-    [Authorize]
+    //[Authorize]
     public class PersonasController : ControllerBase
     {
         private readonly IPersonaService _personaService;
@@ -23,9 +23,10 @@ namespace WebApiPersonas.Controllers
         [HttpPost("CrearPersona")]
         public async Task<IActionResult> AddPersona([FromBody] Persona persona)
         {
-            if (persona == null)
+            string mensaje = await ValidarPersona(persona);
+            if (!string.IsNullOrEmpty(mensaje))
             {
-                return BadRequest("La información de la persona no puede ser nula.");
+                return BadRequest(mensaje);
             }
 
             await _personaService.AddAsync(persona);
@@ -77,8 +78,11 @@ namespace WebApiPersonas.Controllers
         [HttpPut("ActualizarPersona")]
         public async Task<IActionResult> Update([FromBody] Persona persona)
         {
-            if (persona == null)
-                return BadRequest("Se debe enviar un objeto persona para actualizar.");
+            string mensaje = await ValidarPersona(persona);
+            if (!string.IsNullOrEmpty(mensaje)) 
+            {
+                return BadRequest(mensaje);
+            }
 
             var existe = await _personaService.GetByIdAsync(persona.Identificador);
             if (existe == null)
@@ -100,6 +104,22 @@ namespace WebApiPersonas.Controllers
 
             await _personaService.DeleteAsync(id);
             return NoContent();
+        }
+
+        private async Task<string> ValidarPersona(Persona persona) 
+        {
+            string mensaje = string.Empty;
+            if (persona == null)
+            {
+                mensaje = "La información de la persona no puede ser nula.";
+            }
+
+            if (persona.Email == string.Empty || persona.NumeroIdentificacion == string.Empty || persona.TipoIdentificacion == string.Empty)
+            {
+                mensaje = "Los campos Email, Numero identificaicion, Tipo de identificaion son obligatorios";
+            }
+
+            return mensaje;
         }
     }
 }

@@ -80,8 +80,7 @@ namespace Application.Services
                 await _usuarioRepository.AddAsync(newuser);
                 EmailSenderService sender = new EmailSenderService();
                 bool result = await sender.SendEmailAsync(entity.Email,
-                    "Creación de usuario", $"Tu usuario es{entity.Email} y el pass es {entity.NumeroIdentificacion}",
-                    "tonyjorres@gmail.com", newuser.Contrasena);
+                    "Creación de usuario", $"Tu usuario es: {entity.Email} y el pass es {entity.NumeroIdentificacion}");
                 if (result)
                 {
                     Console.WriteLine("Email sent successfully.");
