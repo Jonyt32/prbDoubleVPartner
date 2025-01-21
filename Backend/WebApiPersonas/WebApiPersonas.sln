@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "..\Core\Core.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{511A0803-D80A-4AA4-A26B-C163B6F1C346}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnviarEmailprbJony", "..\EnviarEmailprbJony\EnviarEmailprbJony.csproj", "{A978415F-CFED-4BB9-9FCC-6FFC39BBC78D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{511A0803-D80A-4AA4-A26B-C163B6F1C346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{511A0803-D80A-4AA4-A26B-C163B6F1C346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{511A0803-D80A-4AA4-A26B-C163B6F1C346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A978415F-CFED-4BB9-9FCC-6FFC39BBC78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A978415F-CFED-4BB9-9FCC-6FFC39BBC78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A978415F-CFED-4BB9-9FCC-6FFC39BBC78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A978415F-CFED-4BB9-9FCC-6FFC39BBC78D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

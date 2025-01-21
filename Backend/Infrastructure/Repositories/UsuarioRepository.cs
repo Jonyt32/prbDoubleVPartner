@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories
             try
             {
                 using var connection = new SqlConnection(_connectionString);
-                var query = "SELECT Identificador, Usuario, Pass, FechaCreacion FROM Usuarios";
+                var query = "SELECT Identificador, NombreUsuario, Contrasena, FechaCreacion FROM Usuarios";
                 return await connection.QueryAsync<Usuario>(query);
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
             try
             {
                 using var connection = new SqlConnection(_connectionString);
-                var query = "SELECT Identificador, Usuario, Pass, FechaCreacion FROM Usuarios WHERE Identificador = @Id";
+                var query = "SELECT Identificador, NombreUsuario, Contrasena, FechaCreacion FROM Usuarios WHERE Identificador = @Id";
                 return await connection.QuerySingleOrDefaultAsync<Usuario>(query, new { Id = id });
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace Infrastructure.Repositories
             try
             {
                 using var connection = new SqlConnection(_connectionString);
-                var query = "SELECT Identificador, Usuario, Pass, FechaCreacion FROM Usuarios WHERE Usuario = @Usuario and Pass=@Pass";
+                var query = "SELECT Identificador, NombreUsuario, Contrasena, FechaCreacion FROM Usuarios WHERE NombreUsuario = @Usuario and Contrasena=@Pass";
                 return await connection.QuerySingleOrDefaultAsync<Usuario>(query, new { Usuario = usuario, Pass = pass });
             }
             catch (Exception ex)
@@ -69,8 +69,8 @@ namespace Infrastructure.Repositories
             {
                 using var connection = new SqlConnection(_connectionString);
                 var query = @"
-                INSERT INTO Usuarios (Usuario, Pass, FechaCreacion)
-                VALUES (@Usuario, @Pass, @FechaCreacion)";
+                INSERT INTO Usuarios (NombreUsuario, Contrasena, FechaCreacion)
+                VALUES (@NombreUsuario, @Contrasena, @FechaCreacion)";
                 await connection.ExecuteAsync(query, entity);
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace Infrastructure.Repositories
                 using var connection = new SqlConnection(_connectionString);
                 var query = @"
                 UPDATE Usuarios 
-                SET Usuario = @Usuario, Pass = @Pass 
+                SET NombreUsuario = @NombreUsuario, Contrasena = @Contrasena 
                 WHERE Identificador = @Identificador";
                 await connection.ExecuteAsync(query, entity);
             }

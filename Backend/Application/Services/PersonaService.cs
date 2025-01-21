@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Interfaces.Services;
+using EnviarEmailprbJony;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +78,18 @@ namespace Application.Services
                     Contrasena = entity.NumeroIdentificacion
                 };
                 await _usuarioRepository.AddAsync(newuser);
+                EmailSenderService sender = new EmailSenderService();
+                bool result = await sender.SendEmailAsync(entity.Email,
+                    "Creación de usuario", $"Tu usuario es{entity.Email} y el pass es {entity.NumeroIdentificacion}",
+                    "tonyjorres@gmail.com", newuser.Contrasena);
+                if (result)
+                {
+                    Console.WriteLine("Email sent successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Failed to send the email.");
+                }
 
             }
             catch (Exception ex)

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>EnviarEmailprbJony</id>
+    <version>1.0.0</version>
+    <authors>JonyTorres</authors>
+    <description>Una biblioteca para enviar correos electrónicos usando SMTP</description>
+    <tags>email, smtp, mail, send</tags>
+    <repository type="git" url="https://github.com/Jonyt32/prbDoubleVPartner/tree/main/Backend/EnviarEmailprbJony" commit="280ef60e3709b3648b9a1f83f5c2d2ad77536852" />
+    <dependencies>
+      <group targetFramework="net8.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\bin\Release\net8.0\EnviarEmailprbJony.dll" target="lib\net8.0\EnviarEmailprbJony.dll" />
+  </files>
+</package>

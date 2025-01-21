@@ -1,0 +1,12 @@
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\bin\Release\net8.0\EnviarEmailprbJony.deps.json
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\bin\Release\net8.0\EnviarEmailprbJony.dll
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\bin\Release\net8.0\EnviarEmailprbJony.pdb
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.GeneratedMSBuildEditorConfig.editorconfig
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.AssemblyInfoInputs.cache
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.AssemblyInfo.cs
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.csproj.CoreCompileInputs.cache
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.sourcelink.json
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.dll
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\refint\EnviarEmailprbJony.dll
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\EnviarEmailprbJony.pdb
+D:\JonyTorres\pruebas\prbDoubleVPartners\Backend\EnviarEmailprbJony\obj\Release\net8.0\ref\EnviarEmailprbJony.dll
