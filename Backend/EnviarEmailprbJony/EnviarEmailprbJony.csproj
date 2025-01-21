@@ -7,7 +7,7 @@
 	<Authors>JonyTorres</Authors>
 	<Description>Una biblioteca para enviar correos electrónicos usando SMTP</Description>
 	<PackageTags>email, smtp, mail, send</PackageTags>
-	<RepositoryUrl>https://github.com/YourGitHubUsername/EnviarEmailprbJony</RepositoryUrl>
+	<RepositoryUrl>https://github.com/Jonyt32/prbDoubleVPartner/tree/main/Backend/EnviarEmailprbJony</RepositoryUrl>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
