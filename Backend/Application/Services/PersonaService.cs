@@ -12,10 +12,12 @@ namespace Application.Services
     public class PersonaService : IPersonaService
     {
         private readonly IPersonaRepository _personaRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
 
-        public PersonaService(IPersonaRepository personaRepository)
+        public PersonaService(IPersonaRepository personaRepository, IUsuarioRepository usuarioRepository)
         {
             _personaRepository = personaRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         /// <summary>
@@ -68,6 +70,14 @@ namespace Application.Services
                 }
 
                 await _personaRepository.AddAsync(entity);
+                Usuario newuser = new Usuario() 
+                {
+                    FechaCreacion = DateTime.Now,
+                    NombreUsuario = entity.Email,
+                    Contrasena = entity.NumeroIdentificacion
+                };
+                await _usuarioRepository.AddAsync(newuser);
+
             }
             catch (Exception ex)
             {

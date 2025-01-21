@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	<PackageId>EnviarEmailprbJony</PackageId>
+	<Version>1.0.0</Version>
+	<Authors>JonyTorres</Authors>
+	<Description>Una biblioteca para enviar correos electrónicos usando SMTP</Description>
+	<PackageTags>email, smtp, mail, send</PackageTags>
+	<RepositoryUrl>https://github.com/YourGitHubUsername/EnviarEmailprbJony</RepositoryUrl>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
