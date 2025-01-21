@@ -21,15 +21,18 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 
-// Configurar Serilog
-builder.Host.UseSerilog((ctx, lc) => lc
-    .WriteTo.Console()
-    .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://elasticsearch:9200"))
+// Configuración de Serilog para enviar los logs a Elasticsearch
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()  // Establecer el nivel mínimo de log a 'Debug'
+    .WriteTo.Console()  // Escribir logs en la consola
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)  // Escribir logs en archivos
+    .WriteTo.Elasticsearch(new Serilog.Sinks.Elasticsearch.ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
     {
-        AutoRegisterTemplate = true,
-        IndexFormat = "logstash-{0:yyyy.MM.dd}"
+        AutoRegisterTemplate = true,  // Si el índice no existe, se crea automáticamente
+        IndexFormat = "logstash-{0:yyyy.MM.dd}",  // Nombre del índice con formato de fecha
+        TypeName = null  // Desactiva el uso de 'Type' (el tipo de log en Elasticsearch)
     })
-);
+    .CreateLogger();
 
 // Agregar servicios CORS
 builder.Services.AddCors(options =>
@@ -58,10 +61,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Host.UseSerilog();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(c =>
 {
     // Configurar la documentación de Swagger para el JWT
