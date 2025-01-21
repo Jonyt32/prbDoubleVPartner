@@ -23,7 +23,7 @@ namespace Application.Services.Authentication
             _audience = configuration["Jwt:Audience"];
         }
 
-        public string GenerateToken(string userId, string userName, IEnumerable<string> roles)
+        public string GenerateToken(string userId, string userName)
         {
             var claims = new List<Claim>
             {
@@ -32,8 +32,7 @@ namespace Application.Services.Authentication
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
+            
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

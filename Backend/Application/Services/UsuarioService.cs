@@ -42,6 +42,18 @@ namespace Application.Services
             }
         }
 
+        public async Task<Usuario> GetuserLoginsync(string usuario, string pass)
+        {
+            try
+            {
+                return await _usuarioRepository.GetuserLoginsync(usuario, pass);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task AddAsync(Usuario entity)
         {
             try

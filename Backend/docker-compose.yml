@@ -18,7 +18,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
     environment:
-      - SA_PASSWORD=jtorres!qwerty32
+      - SA_PASSWORD=Jtorres@qwerty32
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"

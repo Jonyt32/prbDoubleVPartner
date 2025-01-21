@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebApiPersonas.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    //[Authorize]
+    [Route("api/[controller]/")]
+    [Authorize]
     public class PersonasController : ControllerBase
     {
         private readonly IPersonaService _personaService;
@@ -20,7 +20,7 @@ namespace WebApiPersonas.Controllers
         /// <summary>
         /// Agregar una nueva persona.
         /// </summary>
-        [HttpPost()]
+        [HttpPost("CrearPersona")]
         public async Task<IActionResult> AddPersona([FromBody] Persona persona)
         {
             if (persona == null)
@@ -51,7 +51,7 @@ namespace WebApiPersonas.Controllers
         /// <summary>
         /// Obtiene todas las personas.
         /// </summary>
-        [HttpGet]
+        [HttpGet("ListarPersona")]
         public async Task<IActionResult> GetAll()
         {
             var personas = await _personaService.GetAllAsync();
@@ -61,7 +61,7 @@ namespace WebApiPersonas.Controllers
         /// <summary>
         /// Obtiene una persona por su identificador.
         /// </summary>
-        [HttpGet("{id}")]
+        [HttpGet("ConsultarPersona")]
         public async Task<IActionResult> GetById(int id)
         {
             var persona = await _personaService.GetByIdAsync(id);
@@ -70,28 +70,19 @@ namespace WebApiPersonas.Controllers
             return Ok(persona);
         }
 
-        /// <summary>
-        /// Consulta personas utilizando el procedimiento almacenado.
-        /// </summary>
-        [HttpPost("consultar")]
-        public async Task<IActionResult> ConsultarConSP([FromBody] PersonaFiltro filtro)
-        {
-            var personas = await _personaService.ObtenerPersonasConSPAsync(filtro);
-            return Ok(personas);
-        }
 
         /// <summary>
         /// Actualiza una persona existente.
         /// </summary>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Persona persona)
+        [HttpPut("ActualizarPersona")]
+        public async Task<IActionResult> Update([FromBody] Persona persona)
         {
-            if (id != persona.Identificador)
-                return BadRequest("El ID de la persona no coincide con el ID de la ruta.");
+            if (persona == null)
+                return BadRequest("Se debe enviar un objeto persona para actualizar.");
 
-            var existe = await _personaService.GetByIdAsync(id);
+            var existe = await _personaService.GetByIdAsync(persona.Identificador);
             if (existe == null)
-                return NotFound();
+                return NotFound($"No existe la persona con el identificador {persona.Identificador}");
 
             await _personaService.UpdateAsync(persona);
             return NoContent();
@@ -100,7 +91,7 @@ namespace WebApiPersonas.Controllers
         /// <summary>
         /// Elimina una persona por su identificador.
         /// </summary>
-        [HttpDelete("{id}")]
+        [HttpDelete("EliminarPersona")]
         public async Task<IActionResult> Delete(int id)
         {
             var persona = await _personaService.GetByIdAsync(id);

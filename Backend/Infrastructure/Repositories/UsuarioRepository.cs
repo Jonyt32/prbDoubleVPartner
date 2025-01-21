@@ -49,6 +49,20 @@ namespace Infrastructure.Repositories
             }
         }
 
+        public async Task<Usuario> GetuserLoginsync(string usuario, string pass) 
+        {
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                var query = "SELECT Identificador, Usuario, Pass, FechaCreacion FROM Usuarios WHERE Usuario = @Usuario and Pass=@Pass";
+                return await connection.QuerySingleOrDefaultAsync<Usuario>(query, new { Usuario = usuario, Pass = pass });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task AddAsync(Usuario entity)
         {
             try
